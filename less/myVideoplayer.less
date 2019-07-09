@@ -1,0 +1,176 @@
+@player-height:100%;
+@player-bg-color:#afd;
+@controllBar-height:25px;
+@controllBar-bg-color:#2a2a2a;
+@tools-img:"../img/icon.png";
+
+body,html{
+  width: 100%;
+  height: 100%;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+
+#player{
+  height:@player-height;
+  display: flex;
+  flex-direction: column;
+  background-color: @player-bg-color;
+
+  #video{
+    flex: auto;
+    height: 0;
+  }
+
+  #controllBar{
+    height:@controllBar-height;
+    flex: none;
+    background-color: @controllBar-bg-color;
+    display: flex;
+
+    .btns{
+      flex: none;
+      width: 55px;
+      height: 25px;
+      //position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      >div{
+        width: 9px;
+        height: 11px;
+        //垂直方向不要用auto
+        margin: auto 8px;
+        background-image: url(@tools-img);
+      }
+
+      .start-btn{
+        background-position: 0 -22px;
+
+        &.active{
+          background-position: 0 -11px;
+        }
+      }
+
+      .end-btn{
+
+      }
+    }
+    .progress{
+      flex: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+
+      .progress-gray{
+        height: 3px;
+        background-color: gray;
+      }
+
+      .progress-pink{
+        //没有设置TLRB的情况下的绝对定位元素，其所处层级中的定位点就是正常文档流中改元素的定位点
+        width: 0;
+        position: absolute;
+        height: 3px;
+        background-color: pink;
+
+      }
+
+      .progress-slider{
+        position: absolute;
+        left: 0;
+        width: 9px;
+        height: 7px;
+        background-color: white;
+        border-radius: 2px;
+      }
+    }
+
+    .tools{
+      width: 230px;
+      height: 25px;
+      flex: none;
+      display: flex;
+      .time{
+        width: 120px;
+        font-size: 12px;
+        color: white;
+        text-align: center;
+        line-height: 25px;
+      }
+
+      .volume{
+        width: 80px;
+        height: 25px;
+        display: flex;
+
+        .volumn-btn{
+          width: 20px;
+          height: 25px;
+          display: flex;
+
+          span{
+            width: 12px;
+            height: 12px;
+            margin: auto;
+            background: url(@tools-img) no-repeat;
+            background-position:0 -34px;
+
+            &.active{
+              background-position:0 -46px;
+            }
+          }
+        }
+        .volumn-progress{
+          width: 60px;
+          height: 25px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          position: relative;
+
+          .progress-gray{
+            height: 3px;
+            background-color: gray;
+
+          }
+
+          .progress-pink{
+            height: 3px;
+            position: absolute;
+            background-color: pink;
+          }
+
+          .progress-slider{
+            position: absolute;
+            width: 9px;
+            height: 7px;
+            background-color: white;
+            border-radius: 2px;
+          }
+        }
+
+
+      }
+
+      .fullscreen{
+        width: 30px;
+        display: flex;
+        span{
+          margin: auto;
+          width: 11px;
+          height: 11px;
+          background: url(@tools-img) no-repeat;
+          background-position: 0 -58px;
+
+          &.active{
+            background-position: 0 -70px;
+          }
+        }
+      }
+    }
+  }
+}
